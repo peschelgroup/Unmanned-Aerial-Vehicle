@@ -1,0 +1,4 @@
+/home/sukup3223/Downloads/udp-image-streaming-master/CMakeFiles/rebuild_cache.dir
+/home/sukup3223/Downloads/udp-image-streaming-master/CMakeFiles/edit_cache.dir
+/home/sukup3223/Downloads/udp-image-streaming-master/CMakeFiles/client.dir
+/home/sukup3223/Downloads/udp-image-streaming-master/CMakeFiles/server.dir

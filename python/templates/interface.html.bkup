@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1" />
+	<title>{{title}}</title>
+	<script src="static/js/ajax.js"></script>
+	<script src="static/js/jquery.js"></script>
+	<script src="static/js/dist/knob-min.js"></script>
+	<script type="text/javascript"></script>
+	<meta name="viewport" content="user-scalable=no">
+	<style>
+
+			.h1 {
+
+				position: absolute;
+
+				top: -25px;
+
+				left: 75px;
+
+			}
+
+		
+
+			.switch {
+
+			  position: relative;
+
+			  display: inline-block;
+
+			  width: 60px;
+
+			  height: 34px;
+
+			}
+
+
+
+			.switch input {display:none;}
+
+
+
+			.slider2 {
+
+			  position: absolute;
+
+			  cursor: pointer;
+
+			  top: 0;
+
+			  left: 0;
+
+			  right: 0;
+
+			  bottom: 0;
+
+			  background-color: #ccc;
+
+			  -webkit-transition: .4s;
+
+			  transition: .4s;
+
+			}
+
+
+
+			.slider2:before {
+
+			  position: absolute;
+
+			  content: "";
+
+			  height: 26px;
+
+			  width: 26px;
+
+			  left: 4px;
+
+			  bottom: 4px;
+
+			  background-color: white;
+
+			  -webkit-transition: .4s;
+
+			  transition: .4s;
+
+			}
+
+
+
+			input:checked + .slider2 {
+
+			  background-color: #4CAF50;
+
+			}
+
+
+
+			input:focus + .slider2 {
+
+			  box-shadow: 0 0 1px #2196F3;
+
+			}
+
+
+
+			input:checked + .slider2:before {
+
+			  -webkit-transform: translateX(26px);
+
+			  -ms-transform: translateX(26px);
+
+			  transform: translateX(26px);
+
+			}
+
+		
+
+			.leftright {
+
+				width: 100%;
+
+			}
+
+
+
+			.updown {
+
+				width: 100%;
+
+			}
+
+			
+
+			.slider {
+
+				-webkit-appearance: none;
+
+				appearance: none;
+
+				width: 520px;
+
+				height: 25px;
+
+				background: #d3d3d3;
+
+				position: absolute;
+
+				left: 45px;
+
+				top: 500px;
+
+			}
+
+			
+
+			#updown {
+
+				position: absolute;
+
+				left: -172px;
+
+				top: 282px;
+
+				transform: rotate(270deg);
+
+				-moz-transform: rotate(270deg);
+
+				width: 400px;
+
+				height: 25px;
+
+				background: #d3d3d3;
+
+			}
+
+			
+
+			/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+
+			.slider::-webkit-slider-thumb {
+
+				-webkit-appearance: none;
+
+				appearance: none;
+
+				width: 25px;
+
+				height: 25px;
+
+				background: #4CAF50;
+
+				cursor: pointer;
+
+			}
+
+
+
+			#updown::-webkit-slider-thumb {
+
+				-webkit-appearance: none;
+
+				appearance: none;
+
+				width: 25px;
+
+				height: 25px;
+
+				background: #4CAF50;
+
+				cursor: pointer;
+
+			}
+
+			.slider::-moz-range-thumb {
+
+				width: 25px;
+
+				height: 25px;
+
+				background: #4CAF50;
+
+				cursor: pointer;
+
+			}
+
+			#updown::-moz-range-thumb {
+
+				width: 25px;
+
+				height: 25px;
+
+				background: #4CAF50;
+
+				cursor: pointer;
+
+			}
+
+			
+
+			#container {
+
+				position: absolute;
+
+				top: 100px;
+
+				left: 48px;
+
+				margin: 0px auto;
+
+				width: 500px;
+
+				height: 375px;
+
+				border: 10px #333 solid;
+
+			}
+			
+			.Demo rect { fill: #57C7B6; }
+			.Demo g polygon { opacity: 1; }
+			.Demo circle {
+			  fill: #256058;
+			  stroke: #57C7B6;
+			  stroke-width: 2;
+			  filter: url(#dropshadow);
+			}
+			.Demo text {
+			  font-size: 10px;
+			  fill: #57C7B6;
+			  font-family: sans-serif;
+			  font-weight: 300;
+			  -webkit-transition: all .1s ease-in-out;
+			}
+			.Demo text.active {
+			  font-size: 15px;
+			  -webkit-transition: all .3s ease-in-out;
+			}	
+			
+		</style>
+	
+</head>
+<body bgcolor="#3D494D">
+<div id="tableSpace">
+<table border="0" cellpadding="1" cellspacing="1" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td colspan="5" style="height: 440px;"></td>
+		</tr>
+		<tr>
+			<td style="width=20%;">
+			<div align="left" style="text-align: center;">
+				<label id="xpos" style="font-size: 30px; color: #59eaf2">90</label>
+				</div>
+			
+			</td>
+			
+			<td style="width: 20%; vertical-align: bottom; text-align: center; padding: 0 50px;">
+			</td>
+			
+			<td style="width: 20%; vertical-align: bottom; text-align: center; padding: 0 50px;">
+			
+			</td>
+			
+			<td style="width: 20%; vertical-align: bottom; text-align: center; padding: 0 50px;">
+			
+			</td>
+			
+			<td style="width=20%;">
+			<div align="center">
+				<label id="ypos" style="font-size: 30px; color: #59eaf2">90</label>
+				</div>
+			
+			</td>
+		</tr>
+		<tr>
+			<td style="width=49%;">
+				<div align="left">
+				<input id="xvalue" class="preset3" type="range" min="0" max="180"
+				 data-width="200"
+				 data-height="200"
+				 data-labels=""
+				 data-angleOffset="220"
+				 data-angleRange="280"
+				 data-size="200"
+				 oninput="updateValue(this.value,'x');post();"
+				 onchange="updateValue(this.value, 'x');post();">
+			</div>
+			</td>
+			<td style="width=2%;"></td>
+			<td style="width=49%;">
+				
+			</td>
+			<td style="text=align: middle; width=50%; vertical-align: bottom; padding: 6px">
+				<div align="center">
+				<div id="switch" style="width: 20%; vertical-align: bottom; text-align: center; padding: 0 50px;">
+				<label class="switch" style="vertical-align: bottom;">
+	 
+				<input type="checkbox" id="gripSwitch" onchange="post();" value={{gripVal}}>
+
+				<span class="slider2" align="bottom"></span>
+				</label></div></div>
+				<label id="grip" style="color: #59eaf2; vertical-align: bottom;">Grip Switch (Green: Open)</label>
+				</td>
+			<td style="width=49%;">
+				<div align="right">
+				<input id="yvalue" class="preset3" type="range" min="0" max="140"
+				 data-width="200"
+				 data-height="200"
+				 data-angleOffset="220"
+				 data-angleRange="280"
+				 data-size="200"
+				 oninput="post(); updateValue(this.value,'y');"
+				 onchange="post(); updateValue(this.value, 'y');">
+			</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+
+<script type="text/javascript">
+	Ui.Demo = function(){};
+	Ui.Demo.prototype = Object.create(Ui.prototype);
+	Ui.Demo.prototype.createElement = function(){
+		"use strict";
+		Ui.prototype.createElement.apply(this, arguments);
+		this.addComponent(new Ui.Pointer({
+			type: "Rect",
+			pointerWidth: 3,
+			pointerHeight: this.width/5,
+			offset: this.width/2 - this.width/ 3.3 - this.width / 10
+		}));
+		this.addComponent(new Ui.Scale(this.merge(this.options, { drawScale: true,
+																  drawDial: false,
+																  radius: this.width/2.6})));
+		var circle = new Ui.El.Circle(this.width / 3.3, this.width / 2, this.height / 2);
+		this.el.node.appendChild(circle.node); 
+		this.el.node.setAttribute("class", "Demo");
+	};
+	
+	new Knob(document.getElementById('xvalue'), new Ui.Demo());
+	new Knob(document.getElementById('yvalue'), new Ui.Demo());
+</script>
+
+<script type="text/javascript">
+			function updateValue(val, axis) {
+
+				if (axis == 'x') {
+
+					document.getElementById('xpos').innerHTML=val; 
+
+				}
+
+				else if (axis == 'y') {
+
+					document.getElementById('ypos').innerHTML=val; 
+
+				}
+
+			}
+</script>
+
+<script type="text/javascript">
+			function post(){
+				var form = document.createElement("form");
+				form.setAttribute("method", "post");
+				form.setAttribute("id", "submitForm");
+				form.setAttribute("action", "/");
+
+				var grip = document.createElement("input");
+				grip.setAttribute("value", document.getElementById('gripSwitch').checked);
+				grip.setAttribute("name", "gripper");
+				grip.setAttribute("type", "hidden");
+
+				var arm = document.createElement("input");
+				arm.setAttribute("value", document.getElementById('yvalue').value);
+				arm.setAttribute("name", "armVal");
+				arm.setAttribute("type", "hidden");
+
+				var base = document.createElement("input");
+				base.setAttribute("value", document.getElementById('xvalue').value);
+				base.setAttribute("name", "baseVal");
+				base.setAttribute("type", "hidden");
+					
+				form.appendChild(grip);
+				form.appendChild(arm);
+				form.appendChild(base);
+				console.log(form);
+
+				document.body.appendChild(form);
+				
+				var frm = $('#submitForm');			
+				frm.on('submit', function(e){
+					e.preventDefault();
+					$.ajax({
+						type: frm.attr('method'),
+						url: frm.attr('action'),
+						data: frm.serialize()			
+					});
+				});		
+				frm.submit();	
+				frm.remove();				
+			}
+		</script>
+		
+</body>
+
+</body>
+</html>
