@@ -15,7 +15,7 @@ iPad app with 2 video inputs.
 - video: This folder contains the c++ code required to compile together a linux executable
 		 which will stream video over udp. 
 
-###Usage
+### Usage
 1. On the machine which the arduino is connected to, run the server.py file
 	- 'sudo python main.py <name>': Whatever the output file should be named
 		- The output file contains all the input from the webserver
