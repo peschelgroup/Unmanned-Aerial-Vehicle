@@ -1,4 +1,4 @@
-# Unmanned-Aerial-Vehicle
+# Manipulator Interface and Control
 
 The files in this project can be used to control a 2 or 3 servo robotic arm using an
 iPad app with 2 video inputs.
